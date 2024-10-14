@@ -1,1 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>State Facts</title>
+    </head>
+    <body>
 
+        <form action="/showFact">
+          <select name="state" >
+            {{ state_options }}
+          </select>
+          <br><br>
+          <input type="submit" value="Get a fun fact!">
+        </form>
+        <div id="funFact">
+            <p>{{ funFact }}</p>
+			      <p>{{ funFact2 }}</p>
+        </div>
+
+    </body>
+</html>
