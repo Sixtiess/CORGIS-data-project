@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>State Facts</title>
-    </head>
-    <body>
+{% extends "layout.html" %}
 
-        <form action="/showFact">
-          <select name="state" >
-            {{ state_options }}
-          </select>
-          <br><br>
-          <input type="submit" value="Get a fun fact!">
-        </form>
-        <div id="funFact">
-            <p>{{ funFact }}</p>
-			      <p>{{ funFact2 }}</p>
-        </div>
+{% set active_page = "about" %}
 
-    </body>
-</html>
+{% block title %}About the Data{% endblock %}
+
+{% block heading %}About the Data{% endblock %}
+
+{% block body %}
+
+  <p>The data for this website comes from <a href="https://corgis-edu.github.io/corgis/json/">CORGIS</a>.This dataset contains data from June of 2003 to January of 2016 of airports and their flights, delays, and carriers. Data of certain days and weeks are not available, and months in 2003 and 2016 outside of the given time period are not included.</p>
+  <br>
+  <br>
+  <p>One statistic provided by the dataset is total minutes delayed, and aggregates the delays of all flights throughout the month. It also includes the reasons of delays.</p>
+  <br>
+  <br>
+  <p>Airports are listed multiple times in the data, so a certain time period is needed in order to properly analyze the data of an airport.</p>
+{% endblock %}
+
+
+  

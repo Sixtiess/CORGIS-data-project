@@ -1,0 +1,12 @@
+{% extends "mostDelayedAirport.html" %}
+
+{% block body %}
+{{ super() }}
+
+<p>The airport with the highest number of delays in this month was {{ numAirport1 }}</p>
+<p>{{ numAirport1 }} had a total of {{ maxNum1 }} delays</p>
+<br><br>
+<p>The airport with the greatest length of delays in this month was {{ minutesAirport1 }}</p>
+<p>{{ minutesAirport1 }} had a total of {{ maxMinutes1 }} minutes of delay</p>
+
+{% endblock %}

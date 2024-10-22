@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% set active_page = "delaybyairport" %}
+
+{% block title %}Delays by Airport{% endblock %}
+
+{% block heading %}Most Delayed Month{% endblock %}
+
+{% block body %}
+<h2>Select an airport</h2>
+<form action="/delaybyairport">
+  <select name="airport">
+    {{ options }}
+  </select>
+  <br><br>
+  <input type="submit">
+</form>
+{% endblock %}
