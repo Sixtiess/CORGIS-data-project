@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% set active_page = "delaysovertime" %}
+
+{% block title %}Delays Over Time{% endblock %}
+
+{% block heading %}Delays Over Time{% endblock %}
+
+{% block body %}
+<h2>Select an airport</h2>
+<form action="/delaysovertime">
+  <select name="airport">
+    {{ options }}
+  </select>
+  <br><br>
+  <input type="submit">
+</form>
+{% endblock %}

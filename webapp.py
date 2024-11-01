@@ -69,7 +69,32 @@ def render_delaybytime():
     for i in range(0,152):
         options += Markup("<option value=\"" + months[i*29]["Time"]["Label"] + "\">" + months[i*29]["Time"]["Label"] + "</option>")
     return render_template("mostDelayedAirport.html",options=options)
- 
+
+
+@app.route('/delaysovertime')
+def render_delaysovertime():
+    options = ""
+    with open('airlines.json') as airlines_data:
+        months = json.load(airlines_data)
+    
+    if "airport" in request.args:
+        airport = request.args['airport']
+        chartAdd = ""
+        airportName = ""
+        for n in months:
+            if n["Airport"]["Code"] == airport:
+                chartAdd += Markup("{ label: '"+str(n["Time"]["Label"])+"',  y: "+str(n["Statistics"]["Flights"]["Delayed"])+"  },")
+                airportName = n["Airport"]["Name"]
+        for i in range(0,29):
+            options += Markup("<option value=\"" + months[i]["Airport"]["Code"] + "\">" + months[i]["Airport"]["Name"] + "</option>")
+        txt = "Delays at "+airportName+" over time"
+        return render_template("delaysOverTimeResponse.html",options=options,chartAdd1=chartAdd,titleText=txt)
+        
+    for i in range(0,29):
+        options += Markup("<option value=\"" + months[i]["Airport"]["Code"] + "\">" + months[i]["Airport"]["Name"] + "</option>")    
+    return render_template("delaysOverTime.html",options=options)
+    
+    
 def is_localhost():
     """ Determines if app is running on localhost or not
     Adapted from: https://stackoverflow.com/questions/17077863/how-to-see-if-a-flask-app-is-being-run-on-localhost
